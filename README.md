@@ -5,7 +5,7 @@ This workshop will show you how to lift and shift your app.
 Main flow is following:
 
 1. Make your app 5 factors enabled
-2. Use extern the authentioncation functionality (ex. OpenID Connect provider)
+2. Extern the authentioncation functionality (ex. OpenID Connect provider)
 3. Put a gateway in front of your app
 4. Develop a new API behind the gateway as a greenfield app
 
@@ -406,7 +406,7 @@ kubectl apply -f legacy-app.yml
 
 > See also https://buildpacks.io/
 
-## Step2. Use extern the authentioncation functionality
+## Step2. Extern the authentioncation functionality
 
 Under construction...
 
