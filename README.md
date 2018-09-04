@@ -60,7 +60,7 @@ brew install ant
 brew install tomcat
 ```
 
-#### Modify `sources/log4j.properties`
+### Modify `sources/log4j.properties`
 
 Logging to a file does not meet [XI. Logs](https://12factor.net/logs).
 
@@ -84,7 +84,7 @@ log4j.appender.consoleLog.layout.ConversionPattern=[%d{yyyy/MM/dd HH:mm:ss}][%p]
 EOF
 ```
 
-#### Modify `ant/build.properties`
+### Modify `ant/build.properties`
 
 
 ```properties
@@ -152,7 +152,7 @@ tar xzvf flyway-commandline-5.1.4-linux-x64.tar.gz
 mv flyway-5.1.4/ flyway
 ```
 
-### Change the character encoding of SQL files to UTF-8
+### Convert the character encoding of SQL files to UTF-8
 
 Don't use SHIFT_JISX0213 any longer
 
