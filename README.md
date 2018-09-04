@@ -9,7 +9,7 @@ Main flow is following:
 3. Put a gateway in front of your app
 4. Develop a new API behind the gateway as a greenfield app
 
-Rewriting everythig would be the best way to modernize the application if the situaiton allows.
+Rewriting everything would be the best way to modernize the application if the situaiton allows.
 But it could be quite risky when you have to migrate legacy code and add new feature at the same time.
 In this workshop, we will take a strategy to keep the legacy app as it is and add new functionality as a new app then migrate gradually.
 
