@@ -161,6 +161,7 @@ chmod +x embbed-manifest.sh
 
 
 ```bash
+cat <<'EOF' > .profile
 CREDS=$(echo $VCAP_SERVICES | jq -r ".[] | map(select(.name == \"uaa-db\"))[0].credentials")
 
 export DATABASE_HOSTNAME=$(echo $CREDS | jq -r .hostname)
@@ -169,6 +170,7 @@ export DATABASE_USERNAME=$(echo $CREDS | jq -r .username)
 export DATABASE_PASSWORD=$(echo $CREDS | jq -r .password)
 export DATABASE_NAME=$(echo $CREDS | jq -r .name)
 export DATABASE_URL=jdbc:mysql://${DATABASE_HOSTNAME}:${DATABASE_PORT}/${DATABASE_NAME}
+EOF
 ```
 
 ```bash
