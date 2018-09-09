@@ -162,7 +162,7 @@ chmod +x embbed-manifest.sh
 
 ```bash
 cat <<'EOF' > .profile
-CREDS=$(echo $VCAP_SERVICES | jq -r ".[] | map(select(.name == \"uaa-db\"))[0].credentials")
+CREDS=$(echo $VCAP_SERVICES | jq -r ".[] | map(select(.name == \"tour-uaa-db\"))[0].credentials")
 
 export DATABASE_HOSTNAME=$(echo $CREDS | jq -r .hostname)
 export DATABASE_PORT=$(echo $CREDS | jq -r .port)
@@ -188,7 +188,7 @@ applications:
   health-check-type: http
   health-check-http-endpoint: /healthz
   services:
-  - uaa-db
+  - tour-uaa-db
   env:
     SPRING_PROFILES: mysql
     DATABASE_DRIVERCLASSNAME: org.mariadb.jdbc.Driver
@@ -199,6 +199,6 @@ EOF
 ```
 
 ```bash
-cf create-service cleardb turtle uaa-db
+cf create-service cleardb spark tour-uaa-db
 cf push
 ```
