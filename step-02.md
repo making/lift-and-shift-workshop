@@ -189,6 +189,15 @@ export DATABASE_URL=jdbc:mysql://${DATABASE_HOSTNAME}:${DATABASE_PORT}/${DATABAS
 EOF
 ```
 
+Create `credentials.yml` and configure `smtp_user` and `smtp_password` in it:
+
+```yaml
+cat <<EOF > credentials.yml
+smtp_user: your-account@gmail.com
+smpt_password: your-password
+EOF
+```
+
 Run the script:
 
 ```bash
