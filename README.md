@@ -28,6 +28,11 @@ DON'T LIFT AND **STAY**.
 
 ## [Step1. Make your app 5 factors enabled](step-01.md)
 
+As step1, we will focus on making the legacy app 5 factors enabled and deploy it on a cloud native platform.
+
+![image](https://user-images.githubusercontent.com/106908/45280754-95ac4780-b510-11e8-913e-64550244c1fa.png)
+
+
 ## [Step2. Extern the authentioncation functionality](step-02.md)
 
 ## Step3. Put the gateway in front of the app
