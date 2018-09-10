@@ -1,10 +1,17 @@
 ## Step2. Extern the authentioncation functionality
 
+
+As as OIDC provider, we use Cloud Foundry's [UAA](https://github.com/cloudfoundry/uaa).
+
+### Deploy Cloud Foundry's UAA as a stand-alone application
+
+Download a pre-packaged war file:
+
 ```bash
 wget https://github.com/starkandwayne/uaa-war-releases/releases/download/v4.19.2/cloudfoundry-identity-uaa-4.19.2.war -O ROOT.war
 ```
 
-
+Create a UAA's manifest file as a [bosh](https://bosh.io/docs/cli-int/) template file:
 
 ```yaml
 cat <<EOF > uaa.yml
@@ -104,6 +111,10 @@ variables:
 EOF
 ```
 
+Add bosh [ops-files](https://bosh.io/docs/cli-ops-files/) to customize `uaa.yml`
+
+* Adding an OAuth2 client for a gateway (Zuul)
+
 ```bash
 mkdir -p ops-files
 
@@ -127,6 +138,8 @@ cat <<EOF > ops-files/add-zuul.yml
 EOF
 ```
 
+* Adding the smtp notification configuration:
+
 ```bash
 cat <<EOF > ops-files/smtp.yml
 - type: replace
@@ -139,6 +152,8 @@ cat <<EOF > ops-files/smtp.yml
     starttls: true
 EOF
 ```
+
+Create a script to compose `uaa.yml` and embbed it in the war file:
 
 ```bash
 cat <<EOF > embbed-manifest.sh 
@@ -159,6 +174,7 @@ EOF
 chmod +x embbed-manifest.sh 
 ```
 
+Create a pre-runtime hook script to retrieve credentials to access a database (MySQL):
 
 ```bash
 cat <<'EOF' > .profile
@@ -173,10 +189,14 @@ export DATABASE_URL=jdbc:mysql://${DATABASE_HOSTNAME}:${DATABASE_PORT}/${DATABAS
 EOF
 ```
 
+Run the script:
+
 ```bash
 mkdir -p WEB-INF/classes
 ./embbed-manifest.sh 
 ```
+
+Create a manifest file for deploying UAA to Cloud Foundry:
 
 ```bash
 cat <<EOF > manifest.yml
@@ -197,6 +217,8 @@ applications:
     DATABASE_MINIDLE: 1
 EOF
 ```
+
+CF Push!
 
 ```bash
 cf create-service cleardb spark tour-uaa-db

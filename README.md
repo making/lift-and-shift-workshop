@@ -35,6 +35,8 @@ As step1, we will focus on making the legacy app 5 factors enabled and deploy it
 
 ## [Step2. Extern the authentioncation functionality](step-02.md)
 
+![image](https://user-images.githubusercontent.com/106908/45282075-d7d78800-b514-11e8-96d4-ec2b1052b243.png)
+
 ## Step3. Put the gateway in front of the app
 
 Under construction...
