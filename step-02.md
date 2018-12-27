@@ -153,6 +153,16 @@ cat <<EOF > ops-files/smtp.yml
 EOF
 ```
 
+
+Create `credentials.yml` and configure `smtp_user` and `smtp_password` in it:
+
+```yaml
+cat <<EOF > credentials.yml
+smtp_user: your-account@gmail.com
+smpt_password: your-password
+EOF
+```
+
 Create a script to compose `uaa.yml` and embbed it in the war file:
 
 ```bash
@@ -189,14 +199,6 @@ export DATABASE_URL=jdbc:mysql://${DATABASE_HOSTNAME}:${DATABASE_PORT}/${DATABAS
 EOF
 ```
 
-Create `credentials.yml` and configure `smtp_user` and `smtp_password` in it:
-
-```yaml
-cat <<EOF > credentials.yml
-smtp_user: your-account@gmail.com
-smpt_password: your-password
-EOF
-```
 
 Run the script:
 
