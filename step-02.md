@@ -166,7 +166,7 @@ smpt_password: your-password
 EOF
 ```
 
-Create a script to compose `uaa.yml` and embbed it in the war file:
+Create a script to compose `uaa.yml` and embbed it in the war file. Change `route` according to your environment :
 
 ```bash
 cat <<EOF > embbed-manifest.sh 
