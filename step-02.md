@@ -18,6 +18,9 @@ cat <<EOF > uaa.yml
 issuer:
   uri: https://((route))
 
+uaa:
+  url: https://((route))
+
 encryption:
   encryption_keys:
   - label: uaa-encryption-key-1
