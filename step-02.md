@@ -122,7 +122,7 @@ cat <<EOF > ops-files/add-gateway.yml
 - type: replace
   path: /oauth/clients/gateway?
   value:
-    name: Zuul
+    name: Gateway
     authorities: uaa.none
     authorized-grant-types: authorization_code,refresh_token,password
     override: true
