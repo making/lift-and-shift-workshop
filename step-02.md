@@ -8,7 +8,7 @@ As as OIDC provider, we use Cloud Foundry's [UAA](https://github.com/cloudfoundr
 Download a pre-packaged war file:
 
 ```bash
-wget https://github.com/starkandwayne/uaa-war-releases/releases/download/v4.19.2/cloudfoundry-identity-uaa-4.19.2.war -O ROOT.war
+wget https://github.com/starkandwayne/uaa-war-releases/releases/download/v4.26.0/cloudfoundry-identity-uaa-4.26.0.war -O ROOT.war
 ```
 
 Create a UAA's manifest file as a [bosh](https://bosh.io/docs/cli-int/) template file:
@@ -118,9 +118,9 @@ Add bosh [ops-files](https://bosh.io/docs/cli-ops-files/) to customize `uaa.yml`
 ```bash
 mkdir -p ops-files
 
-cat <<EOF > ops-files/add-zuul.yml
+cat <<EOF > ops-files/add-gateway.yml
 - type: replace
-  path: /oauth/clients/zuul?
+  path: /oauth/clients/gateway?
   value:
     name: Zuul
     authorities: uaa.none
@@ -128,12 +128,12 @@ cat <<EOF > ops-files/add-zuul.yml
     override: true
     redirect-uri: http://localhost:8080/login
     scope: openid,role
-    secret: ((zuul_client_secret))
+    secret: ((gateway_client_secret))
     app-launch-url: http://localhost:8080
 - type: replace
-  path: /variables/name=zuul_client_secret?
+  path: /variables/name=gateway_client_secret?
   value:
-    name: zuul_client_secret
+    name: gateway_client_secret
     type: password
 EOF
 ```
@@ -162,7 +162,7 @@ set -e
 
 bosh int uaa.yml \
   -o ops-files/smtp.yml \
-  -o ops-files/add-zuul.yml \
+  -o ops-files/add-gateway.yml \
   -v route=tour-uaa.cfapps.io \
   -v smtp_host=smtp.gmail.com \
   -v smtp_port=587 \
