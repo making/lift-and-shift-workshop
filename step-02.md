@@ -129,7 +129,7 @@ cat <<EOF > ops-files/add-gateway.yml
     authorities: uaa.none
     authorized-grant-types: authorization_code,refresh_token,password
     override: true
-    redirect-uri: http://localhost:8080/login
+    redirect-uri: http://localhost:8080/login/oauth2/code/uaa
     scope: openid,role
     secret: ((gateway_client_secret))
     app-launch-url: http://localhost:8080
